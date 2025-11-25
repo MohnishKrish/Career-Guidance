@@ -1,0 +1,1 @@
+export function skillsArrayToObject(skills){ const obj={}; (skills||[]).forEach(s=>{ if(s.name) obj[s.name]=Number(s.level||1); }); return obj; }

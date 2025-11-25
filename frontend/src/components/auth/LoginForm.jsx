@@ -1,0 +1,5 @@
+import { useState, useContext } from "react";
+import api from "../../api/api.js";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext.jsx";
+export default function LoginForm(){ const nav=useNavigate(); const { login } = useContext(AuthContext); const [form,setForm]=useState({email:'',password:''}); const submit=async()=>{ try{ const res=await api.post('/auth/login',form); if(res.data.token){ login(res.data.token); nav('/ai-dashboard'); } }catch(err){ alert(err.response?.data?.error||'Login failed'); } }; return (<div className='glass p-6 rounded-xl w-80'><h2 className='text-xl font-bold mb-4'>Login</h2><input type='email' placeholder='Email' className='w-full p-2 mb-3 glass rounded' onChange={e=>setForm({...form,email:e.target.value})}/><input type='password' placeholder='Password' className='w-full p-2 mb-3 glass rounded' onChange={e=>setForm({...form,password:e.target.value})}/><button onClick={submit} className='w-full p-2 bg-purple-600 rounded'>Login</button><p className='mt-3 text-sm'>No account? <a href='/signup' className='text-purple-300'>Sign up</a></p></div>); }

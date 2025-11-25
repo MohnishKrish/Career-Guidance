@@ -1,0 +1,2 @@
+import React from "react";
+export default function SkillChip({ skill, onRemove, onLevelChange }){ return (<div className='glass flex items-center gap-3 px-3 py-2 rounded-full'><div className='flex items-center gap-3'><span className='font-medium'>{skill.name}</span><span className='text-xs opacity-70'>Lv {skill.level}</span></div><input type='range' min='1' max='10' value={skill.level} onChange={e=>onLevelChange(Number(e.target.value))} className='w-28' /><button onClick={onRemove} className='text-xs px-2 py-1 rounded bg-red-600/20'>×</button></div>); }

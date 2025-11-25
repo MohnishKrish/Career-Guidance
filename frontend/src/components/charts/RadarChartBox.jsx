@@ -1,0 +1,3 @@
+import React from "react";
+import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer } from "recharts";
+export default function RadarChartBox({ data=[] }) { const chartData = data.map(d=>({ skill: d.skill, level: Math.max(1,Math.min(10,d.level||d.value||0)) })); return (<div className='glass p-4 rounded-xl h-64'><h4 className='font-semibold mb-2'>Skill Radar</h4><ResponsiveContainer width='100%' height='87%'><RadarChart data={chartData}><PolarGrid/><PolarAngleAxis dataKey='skill'/><PolarRadiusAxis domain={[0,10]}/><Radar name='You' dataKey='level' stroke='#7c3aed' fill='#7c3aed' fillOpacity={0.5}/></RadarChart></ResponsiveContainer></div>); }

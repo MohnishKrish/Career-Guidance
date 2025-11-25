@@ -1,0 +1,1 @@
+import SignupForm from '../components/auth/SignupForm.jsx'; export default function SignupPage(){ return <div className='h-screen flex items-center justify-center bg-black'><SignupForm/></div>; }
